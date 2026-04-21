@@ -92,7 +92,6 @@
       background-position: center 30%;
     }
 
-    /* Simulated photo grain */
     .hero-img::after {
       content: '';
       position: absolute;
@@ -229,7 +228,6 @@
       transform: none;
     }
 
-    /* Photo card */
     .photo-card {
       position: relative;
       overflow: hidden;
@@ -293,59 +291,156 @@
       margin-top: 2px;
     }
 
-    .text-block {
-      border: 1px solid var(--border);
-      padding: 32px 28px;
-      background: var(--surface);
+    /* ── ERFAHRUNG & VERFÜGBARKEIT ── */
+    #stats {
+      padding: 0 40px 120px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    .text-block-label {
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 720px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    .stats-panel {
+      padding: 52px 48px;
+    }
+
+    .stats-panel:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    @media (max-width: 720px) {
+      .stats-panel:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    .stats-panel-label {
       font-size: 9px;
-      letter-spacing: .2em;
+      letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 14px;
+      margin-bottom: 40px;
     }
 
-    .text-block p {
+    /* Erfahrung — große Zahlen */
+    .stat-row {
+      display: flex;
+      gap: 48px;
+    }
+
+    .stat { text-align: left; }
+
+    .stat-num {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      color: #eae6dc;
+      display: block;
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+
+    .stat-lbl {
+      display: block;
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+
+    /* Events Timeline */
+    .events-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .events-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    .events-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .ev-name { color: var(--text); }
+    .ev-year {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: .1em;
+    }
+
+    /* Verfügbarkeit */
+    .avail-region {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 600;
+      color: #eae6dc;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .avail-region span { color: var(--accent); }
+
+    .avail-note {
       font-size: 13px;
       font-weight: 300;
       font-style: italic;
       color: var(--muted);
       line-height: 1.8;
+      max-width: 340px;
     }
 
-    .text-block p strong {
-      font-style: normal;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-
-    .stat { text-align: center; }
-    .stat-num {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      display: block;
-    }
-    .stat-lbl {
-      font-size: 9px;
-      letter-spacing: .15em;
+    .avail-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 10px;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text);
+    }
+
+    .avail-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #6fcf64;
+      box-shadow: 0 0 8px #6fcf6488;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
     }
 
     /* ── ABOUT + CONTACT ── */
     #about {
-      padding: 120px 40px;
+      padding: 0 40px 120px;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -431,9 +526,7 @@
     }
     .contact-list .c-val:hover { color: var(--accent); }
 
-    .contact-cta {
-      margin-top: 40px;
-    }
+    .contact-cta { margin-top: 40px; }
 
     .btn {
       display: inline-block;
@@ -483,7 +576,7 @@
       to { transform: scaleY(1); }
     }
 
-    /* ── CUSTOM CURSOR DOT ── */
+    /* ── CURSOR ── */
     .cursor-dot {
       position: fixed;
       width: 6px; height: 6px;
@@ -494,6 +587,17 @@
       transform: translate(-50%, -50%);
       transition: transform .1s, opacity .2s;
       mix-blend-mode: difference;
+    }
+
+    /* Scroll-reveal for stats + about */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s, transform .6s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
   </style>
 </head>
@@ -506,6 +610,7 @@
   <a href="#hero" class="nav-logo">EM</a>
   <ul class="nav-links">
     <li><a href="#gallery">Arbeiten</a></li>
+    <li><a href="#stats">Erfahrung</a></li>
     <li><a href="#about">Kontakt</a></li>
   </ul>
 </nav>
@@ -531,7 +636,6 @@
 
   <div class="masonry">
 
-    <!-- Photo 1 — tall -->
     <div class="masonry-item">
       <div class="photo-card">
         <div class="photo-placeholder" style="--ar: 2/3;">[ photo ]</div>
@@ -544,20 +648,6 @@
       </div>
     </div>
 
-    <!-- Text block -->
-    <div class="masonry-item">
-      <div class="text-block">
-        <div class="text-block-label">// Erfahrung</div>
-        <p></p>
-        <div class="stat-row">
-          <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Jahr</span></div>
-          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Events</span></div>
-          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Strecken</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Photo 2 — wide -->
     <div class="masonry-item">
       <div class="photo-card">
         <div class="photo-placeholder" style="--ar: 16/11;">[ photo ]</div>
@@ -570,7 +660,6 @@
       </div>
     </div>
 
-    <!-- Photo 3 -->
     <div class="masonry-item">
       <div class="photo-card">
         <div class="photo-placeholder" style="--ar: 4/3;">[ photo ]</div>
@@ -583,15 +672,6 @@
       </div>
     </div>
 
-    <!-- Text block 2 -->
-    <div class="masonry-item">
-      <div class="text-block">
-        <div class="text-block-label">// Verfügbarkeit</div>
-        <p>Ansässig im <strong>Raum Köln</strong>. Verfügbar auf Strecken in ganz Deutschland.</p>
-      </div>
-    </div>
-
-    <!-- Photo 4 — square -->
     <div class="masonry-item">
       <div class="photo-card">
         <div class="photo-placeholder" style="--ar: 1/1;">[ photo ]</div>
@@ -607,15 +687,76 @@
   </div>
 </section>
 
+<!-- ERFAHRUNG & VERFÜGBARKEIT -->
+<section id="stats">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <span class="section-title">Erfahrung &amp; Verfügbarkeit</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="stats-grid reveal">
+
+    <!-- Erfahrung -->
+    <div class="stats-panel">
+      <div class="stats-panel-label">// Erfahrung</div>
+
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-num">1</span>
+          <span class="stat-lbl">Jahr aktiv</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-lbl">Events</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-lbl">Strecken</span>
+        </div>
+      </div>
+
+      <ul class="events-list" style="margin-top: 40px;">
+        <li>
+          <span class="ev-name">Karting Center Kerpen</span>
+          <span class="ev-year">2026</span>
+        </li>
+        <li>
+          <span class="ev-name">ADAC Formel 4 — Hockenheim</span>
+          <span class="ev-year">2026</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Verfügbarkeit -->
+    <div class="stats-panel">
+      <div class="stats-panel-label">// Verfügbarkeit</div>
+
+      <div class="avail-region">
+        Raum<br><span>Köln</span>
+      </div>
+      <p class="avail-note">Ansässig im Raum Köln. Verfügbar auf Strecken in ganz Deutschland — für Eventdokumentation, Teambegleitung und redaktionelle Arbeiten.</p>
+
+      <div class="avail-status">
+        <div class="avail-dot"></div>
+        Offen für 2026
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ABOUT + CONTACT -->
 <section id="about">
-  <div class="section-header">
-    <span class="section-num">02</span>
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
     <span class="section-title">Über mich &amp; Kontakt</span>
     <div class="section-line"></div>
   </div>
 
-  <div class="about-grid">
+  <div class="about-grid reveal">
     <div class="about-bio">
       <h2>Elias<br><span>Müller</span></h2>
       <p>Motorsportfotograf aus dem Raum Köln. Ich fotografiere Rennsport, seit ich alt genug war, mit einer Kamera an einem Zaun zu stehen — fasziniert von der Verbindung aus Maschine, Geschwindigkeit und dem Menschen dahinter. Verfügbar für Eventdokumentation, Teambegleitung und redaktionelle Arbeiten.</p>
@@ -625,7 +766,7 @@
       <ul class="contact-list">
         <li>
           <span class="c-key">E-Mail</span>
-          <a href="mailto:mail@elias-mueller.de" class="c-val">eliasmueller.foto@gmail.com</a>
+          <a href="mailto:eliasmueller.foto@gmail.com" class="c-val">eliasmueller.foto@gmail.com</a>
         </li>
         <li>
           <span class="c-key">Instagram</span>
@@ -637,7 +778,7 @@
         </li>
         <li>
           <span class="c-key">Verfügbarkeit</span>
-          <span class="c-val">offen für 2025</span>
+          <span class="c-val">offen für 2026</span>
         </li>
       </ul>
       <div class="contact-cta">
@@ -661,17 +802,28 @@
     dot.style.top  = e.clientY + 'px';
   });
 
-  // Intersection Observer for masonry items
-  const items = document.querySelectorAll('.masonry-item');
-  const obs = new IntersectionObserver((entries) => {
+  // IntersectionObserver für Masonry + Reveal
+  const masonryItems = document.querySelectorAll('.masonry-item');
+  const obsM = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i * 60);
-        obs.unobserve(e.target);
+        obsM.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  items.forEach(el => obs.observe(el));
+  masonryItems.forEach(el => obsM.observe(el));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obsR = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obsR.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obsR.observe(el));
 </script>
 </body>
 </html>
