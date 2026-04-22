@@ -29,6 +29,8 @@ body {
   font-size: 13px;
   line-height: 1.7;
   cursor: none;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 /* ── NAV ── */
@@ -87,6 +89,8 @@ nav {
   justify-content: flex-end;
   padding: 60px 40px;
   overflow: hidden;
+  padding: 0 40px 120px;
+  margin: 0 auto;
 }
 
 .hero-img {
@@ -200,7 +204,7 @@ nav {
 }
 
 .section-title {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text);
@@ -215,7 +219,6 @@ nav {
 /* ── GALLERY ── */
 #gallery {
   padding: 120px 40px;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -224,12 +227,12 @@ nav {
   column-gap: 16px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1600px) {
   .masonry {
     columns: 2;
   }
 }
-@media (max-width: 560px) {
+@media (max-width: 1260px) {
   .masonry {
     columns: 1;
   }
@@ -317,10 +320,20 @@ nav {
   margin-top: 2px;
 }
 
+.gallery-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-cta .btn {
+  min-width: 100%;
+  text-align: center;
+  cursor: no-drop;
+}
+
 /* ── ERFAHRUNG & VERFÜGBARKEIT ── */
 #stats {
   padding: 0 40px 120px;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -448,7 +461,6 @@ nav {
   font-style: italic;
   color: var(--muted);
   line-height: 1.8;
-  max-width: 340px;
 }
 
 .avail-status {
@@ -484,7 +496,6 @@ nav {
 /* ── ABOUT + CONTACT ── */
 #about {
   padding: 0 40px 120px;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -532,7 +543,6 @@ nav {
   color: var(--muted);
   line-height: 1.85;
   font-style: italic;
-  max-width: 420px;
 }
 
 .about-contact {
