@@ -227,12 +227,12 @@ nav {
   column-gap: 16px;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 900px) {
   .masonry {
     columns: 2;
   }
 }
-@media (max-width: 1260px) {
+@media (max-width: 560px) {
   .masonry {
     columns: 1;
   }
